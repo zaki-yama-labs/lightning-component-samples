@@ -34,6 +34,7 @@ var forceDeploy = function(username, password) {
     .then(function(res) {
       if (res.details !== null && !res.success){
         console.error(res);
+        console.error(res.details);
         return callback(new Error('Deploy failed.'));
       }
       return callback();
@@ -59,7 +60,10 @@ gulp.task('build', function() {
 gulp.task('deploy', function() {
   return gulp.src('pkg/**/*', {
     base: '.'
-  }).pipe(zip('pkg.zip')).pipe(forceDeploy(process.env.SF_USERNAME, process.env.SF_PASSWORD));
+  })
+  .pipe(zip('pkg.zip'))
+  .pipe(forceDeploy(process.env.SF_USERNAME, process.env.SF_PASSWORD))
+  .on('error', handleErrors);
 });
 
 gulp.task('watch', function() {
