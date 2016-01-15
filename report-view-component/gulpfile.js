@@ -34,7 +34,8 @@ var forceDeploy = function(username, password) {
     .then(function(res) {
       if (res.details !== null && !res.success){
         console.error(res);
-        console.error(res.details);
+        console.log('***************ERROR DETAILS***************');
+        console.error(res.details.componentFailures);
         return callback(new Error('Deploy failed.'));
       }
       return callback();
