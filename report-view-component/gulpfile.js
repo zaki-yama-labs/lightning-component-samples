@@ -9,6 +9,11 @@ var deamd = require('deamd');
 var through2 = require('through2');
 var jsforce = require('jsforce');
 var notify = require('gulp-notify');
+var env = require('gulp-env');
+
+env({
+  file: '.env.json'
+});
 
 // ref. https://github.com/vigetlabs/gulp-starter/blob/master/gulpfile.js/lib/handleErrors.js
 var handleErrors = function(err, callback) {
