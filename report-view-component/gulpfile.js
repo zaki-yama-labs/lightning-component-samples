@@ -1,4 +1,4 @@
-var componentName = 'HereIsYourComponentName';
+var componentName = 'ReportView';
 
 var gulp = require('gulp');
 var zip = require('gulp-zip');

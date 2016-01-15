@@ -1,5 +1,4 @@
 <aura:component controller="ReportViewAuraController"><!--implements="flexipage:availableForAllPageTypes">-->
-	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 	<div class="card">
 		<div class="card-heading context-dashboard">
 			Report View
@@ -8,8 +7,6 @@
 			<div id="chart"></div>
 		</div>
 
-		<ltng:require styles="/resource/c3/c3.min.css" />
-		<ltng:require scripts="/resource/c3/c3.min.js" />
-		<ltng:require scripts="/resource/c3/d3.min.js" />
+		<ltng:require scripts="/resource/ReportView" afterScriptsLoaded="{!c.doInit}"/>
 	</div>
 </aura:component>

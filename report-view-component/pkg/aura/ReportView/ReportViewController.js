@@ -14,7 +14,7 @@
           var value = reportData.factMap[key + '!T'].aggregates[0].value;
           returnData.push([label, value]);
         }
-        var chart = c3.generate({
+        var chart = ReportView.c3.generate({
           bindto: '#chart',
           data: {
             columns: returnData,
