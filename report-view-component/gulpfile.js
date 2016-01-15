@@ -9,6 +9,11 @@ var deamd = require('deamd');
 var through2 = require('through2');
 var jsforce = require('jsforce');
 var notify = require('gulp-notify');
+var env = require('gulp-env');
+
+env({
+  file: '.env.json'
+});
 
 // ref. https://github.com/vigetlabs/gulp-starter/blob/master/gulpfile.js/lib/handleErrors.js
 var handleErrors = function(err, callback) {
@@ -34,7 +39,8 @@ var forceDeploy = function(username, password) {
     .then(function(res) {
       if (res.details !== null && !res.success){
         console.error(res);
-        console.error(res.details);
+        console.log('***************ERROR DETAILS***************');
+        console.error(res.details.componentFailures);
         return callback(new Error('Deploy failed.'));
       }
       return callback();

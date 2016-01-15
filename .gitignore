@@ -1,4 +1,6 @@
 .DS_Store
 
+.env.json
+
 node_modules
 bower_components

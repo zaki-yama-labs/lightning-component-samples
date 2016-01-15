@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>AuraDev</fullName>
-    <types>
-        <members>HereIsYourComponentName</members>
-        <name>AuraDefinitionBundle</name>
-    </types>
-    <types>
-        <members>HereIsYourComponentName</members>
-        <name>StaticResource</name>
-    </types>
-    <version>33.0</version>
+	<fullName>AuraDev</fullName>
+	<types>
+		<members>*</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>ReportView</members>
+		<members>PreviewApp</members>
+		<name>AuraDefinitionBundle</name>
+	</types>
+	<types>
+		<members>c3</members>
+		<name>StaticResource</name>
+	</types>
+	<version>33.0</version>
 </Package>
