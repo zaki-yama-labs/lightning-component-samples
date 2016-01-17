@@ -21,7 +21,7 @@ This component is introduced by the video:
   ```
   $ npm install -g gulp  # インストールしていなければ
   $ npm install
-  $ gulp  # デプロイします
+  $ gulp  # デプロイ
   ```
 
 4. 開発者コンソールで `Preview.app` を開きます。または任意の Lightning アプリケーションに `ReportView.cmp` を追加します。
