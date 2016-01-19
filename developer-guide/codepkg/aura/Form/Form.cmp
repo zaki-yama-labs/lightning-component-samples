@@ -1,0 +1,48 @@
+<aura:component controller="yama1.ExpenseController">
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<aura:attribute name="expenses" type="yama1.Expense__c[]"/>
+	<aura:attribute name="newExpense" type="yama1.Expense__c"
+		  default="{ 'sobjectType': 'yama1__Expense__c',
+		  'Name': '',
+		  'yama1__Amount__c': 0,
+		  'yama1__Client__c': '',
+		  'yama1__Date__c': '',
+		  'yama1__Reimbursed__c': false
+		  }"/>
+	<!-- Attributes for Expense Counters -->
+	<aura:attribute name="total" type="Double" default="0.00" />
+	<aura:attribute name="exp" type="Double" default="0" />
+	<!-- Input Form using components -->
+	<form>
+		<fieldset>
+			<ui:inputText aura:id="expname" label="Expense Name" class="form-control" value="{!v.newExpense.Name}"
+				placeholder="My Expense" required="true"/>
+			<ui:inputNumber aura:id="amount" label="Amount" class="form-control" value="{!v.newExpense.yama1__Amount__c}"
+				placeholder="20.80" required="true"/>
+			<ui:inputText aura:id="client" label="Client" class="form-control" value="{!v.newExpense.yama1__Client__c}"
+				placeholder="ABC Co."/>
+			<ui:inputDateTime aura:id="expdate" label="Expense Date" class="form-control" value="{!v.newExpense.yama1__Date__c}"
+				displayDatePicker="true"/>
+			<ui:inputCheckbox aura:id="reimbursed" label="Reimbursed?" value="{!v.newExpense.yama1__Reimbursed__c}"/>
+			<ui:button label="Submit" press="{!c.createExpense}"/>
+		</fieldset>
+	</form>
+	<!-- Expense Counters -->
+	<div class="row">
+		<!-- Change the counter color to red if total amount is more than 100 -->
+		<div class="{!v.total >= 100 ? 'alert alert-danger' : 'alert alert-success'}">
+			<h3>Total Expenses</h3>$<ui:outputNumber value="{!v.total}" format=".00"/>
+		</div>
+		<div class="alert alert-success">
+			<h3>No. of Expenses</h3><ui:outputNumber value="{!v.exp}"/>
+		</div>
+	</div>
+	<!-- Display expense records -->
+	<div class="row">
+		<aura:iteration items="{!v.expenses}" var="expense">
+		<p>{!expense.Name}, {!expense.yama1__Client__c},
+		{!expense.yama1__Amount__c}, {!expense.yama1__Date__c},
+		{!expense.yama1__Reimbursed__c}</p>
+		</aura:iteration>
+	</div>
+</aura:component>
