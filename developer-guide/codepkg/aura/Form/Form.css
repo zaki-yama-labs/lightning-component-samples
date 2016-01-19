@@ -1,0 +1,30 @@
+.THIS .uiInputCheckbox {
+    margin-left: 20px;
+}
+.THIS .uiButton {
+    margin-bottom: 20px;
+}
+.THIS .row {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.THIS .blue {
+    background: #d9edf2;
+}
+.THIS .white {
+    background: #ffffff;
+}
+.THIS .uiInput.uiInputDateTime {
+    position: relative;
+}
+.THIS .uiInputDateTime+.datePicker-openIcon {
+    position: absolute;
+    display: inline-block;
+    left: 90%;
+    top: 25px;
+    background-position: center;
+    padding: 2% 5%;
+}
+.THIS .uiInputDefaultError li {
+  list-style: none;
+}
