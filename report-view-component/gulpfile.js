@@ -51,16 +51,33 @@ var forceDeploy = function(username, password) {
   });
 };
 
-gulp.task('build', function() {
+gulp.task('build', ['js', 'css', 'statics'], function() {
+  return gulp.src('./build/**/*')
+  .pipe(zip(componentName + '.resource'))
+  .pipe(gulp.dest('./pkg/staticresources'));
+});
+
+gulp.task('js', function() {
   return browserify({
     entries: ['./src/scripts/'+ componentName +'.js'],
     standalone: componentName
   }).transform(debowerify)
   .bundle()
   .on('error', handleErrors)
-  .pipe(source(componentName + '.resource'))
+  .pipe(source(componentName + '.js'))
   .pipe(deamd())
-  .pipe(gulp.dest('pkg/staticresources/'));
+  .pipe(gulp.dest('./build/js'));
+});
+
+gulp.task('css', function() {
+  return gulp.src('./src/stylesheets/*.css')
+  .pipe(gulp.dest('./build/css'));
+});
+
+gulp.task('statics', function() {
+  return gulp.src(['./src/**/*.html', './src/images/**/*'], {
+    base: './src'
+  }).pipe(gulp.dest('./build'));
 });
 
 gulp.task('deploy', function() {
