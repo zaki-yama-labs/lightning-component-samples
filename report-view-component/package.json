@@ -9,8 +9,7 @@
   "author": "Your Name",
   "license": "License of ThisComponent",
   "dependencies": {
-    "c3": "^0.4.10",
-    "jquery": "1.11.2"
+    "c3": "^0.4.10"
   },
   "devDependencies": {
     "browserify": "^10.1.2",
