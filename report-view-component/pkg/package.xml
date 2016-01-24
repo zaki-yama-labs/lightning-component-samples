@@ -11,7 +11,7 @@
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
-		<members>c3</members>
+		<members>ReportView</members>
 		<name>StaticResource</name>
 	</types>
 	<version>33.0</version>

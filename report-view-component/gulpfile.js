@@ -1,4 +1,4 @@
-var componentName = 'HereIsYourComponentName';
+var componentName = 'ReportView';
 
 var gulp = require('gulp');
 var zip = require('gulp-zip');
@@ -10,6 +10,8 @@ var through2 = require('through2');
 var jsforce = require('jsforce');
 var notify = require('gulp-notify');
 var env = require('gulp-env');
+var gulpif = require('gulp-if');
+var replace = require('gulp-replace');
 
 env({
   file: '.env.json'
@@ -51,22 +53,41 @@ var forceDeploy = function(username, password) {
   });
 };
 
-gulp.task('build', function() {
+gulp.task('build', ['js', 'css', 'statics'], function() {
+  return gulp.src('./build/**/*')
+  .pipe(zip(componentName + '.resource'))
+  .pipe(gulp.dest('./pkg/staticresources'));
+});
+
+gulp.task('js', function() {
   return browserify({
     entries: ['./src/scripts/'+ componentName +'.js'],
     standalone: componentName
   }).transform(debowerify)
   .bundle()
   .on('error', handleErrors)
-  .pipe(source(componentName + '.resource'))
+  .pipe(source(componentName + '.js'))
   .pipe(deamd())
-  .pipe(gulp.dest('pkg/staticresources/'));
+  .pipe(gulp.dest('./build/js'));
+});
+
+gulp.task('css', function() {
+  return gulp.src('./src/stylesheets/*.css')
+  .pipe(gulp.dest('./build/css'));
+});
+
+gulp.task('statics', function() {
+  return gulp.src(['./src/**/*.html', './src/images/**/*'], {
+    base: './src'
+  }).pipe(gulp.dest('./build'));
 });
 
 gulp.task('deploy', function() {
+  var ts = Date.now();  // Timestamp
   return gulp.src('pkg/**/*', {
     base: '.'
   })
+  .pipe(gulpif('**/*.cmp', replace(/__NOCACHE__/g, ts)))
   .pipe(zip('pkg.zip'))
   .pipe(forceDeploy(process.env.SF_USERNAME, process.env.SF_PASSWORD))
   .on('error', handleErrors);
