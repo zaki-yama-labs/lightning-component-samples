@@ -7,7 +7,7 @@
 			<div id="chart"></div>
 		</div>
 
-		<ltng:require scripts="/resource/ReportView/js/ReportView.js" afterScriptsLoaded="{!c.doInit}"/>
-		<ltng:require styles="/resource/ReportView/css/c3.min.css" afterScriptsLoaded="{!c.doInit}"/>
+		<ltng:require scripts="/resource/ReportView/js/ReportView.js?__NOCACHE__" afterScriptsLoaded="{!c.doInit}"/>
+		<ltng:require styles="/resource/ReportView/css/c3.min.css?__NOCACHE__" afterScriptsLoaded="{!c.doInit}"/>
 	</div>
 </aura:component>

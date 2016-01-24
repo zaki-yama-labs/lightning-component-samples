@@ -10,6 +10,8 @@ var through2 = require('through2');
 var jsforce = require('jsforce');
 var notify = require('gulp-notify');
 var env = require('gulp-env');
+var gulpif = require('gulp-if');
+var replace = require('gulp-replace');
 
 env({
   file: '.env.json'
@@ -81,9 +83,11 @@ gulp.task('statics', function() {
 });
 
 gulp.task('deploy', function() {
+  var ts = Date.now();  // Timestamp
   return gulp.src('pkg/**/*', {
     base: '.'
   })
+  .pipe(gulpif('**/*.cmp', replace(/__NOCACHE__/g, ts)))
   .pipe(zip('pkg.zip'))
   .pipe(forceDeploy(process.env.SF_USERNAME, process.env.SF_PASSWORD))
   .on('error', handleErrors);
