@@ -1,0 +1,31 @@
+<aura:component controller="UserFreezer">
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
+    <aura:attribute name="UserDetails" type="Object" />
+    <aura:attribute name="Message" type="String" />
+    
+    <table>
+        <tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Username</th>
+			<th>Frozen</th>
+        </tr>
+        <aura:iteration items="{!v.UserDetails}" var="ud">
+            <tr>
+                <td>{!ud.user.FirstName}</td>
+                <td>{!ud.user.LastName}</td>
+                <td>{!ud.user.Username}</td>
+                <td id="{!ud.user.Id}">
+                    <ui:inputCheckbox change="{!c.frozenChanged}" 
+                                      value="{!ud.userLogin.IsFrozen}" />
+                </td>
+            </tr>
+        </aura:iteration>
+    <tr>
+        <td colspan="5" class="apply">
+		    <button onclick="{!c.applyChanges}">Apply</button>
+        </td>
+    </tr>
+    </table>
+    {!v.Message}
+</aura:component>
