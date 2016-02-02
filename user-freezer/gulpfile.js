@@ -94,8 +94,8 @@ gulp.task('deploy', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*', ['build']);
+  //gulp.watch('src/**/*', ['build']);
   gulp.watch('pkg/**/*', ['deploy']);
 });
 
-gulp.task('default', ['build', 'deploy']);
+gulp.task('default', ['deploy']);
