@@ -1,0 +1,14 @@
+.THIS td {
+	padding: 3px 5px 2px 5px;
+}
+.THIS th {
+	padding: 3px 5px 2px 5px;
+	font-weight: bold;
+	border-bottom: 1px solid black;
+}
+.THIS .apply {
+	text-align: right;
+}
+.THIS .apply button{
+	font-weight: bold;
+}
