@@ -1,0 +1,15 @@
+<aura:component >
+    <aura:attribute name="label" type="String" description="This is the button label" />
+    <aura:attribute name="class" type="String" description="SLDS class" />
+    <aura:attribute name="onclick" type="Aura.Action" default="{!cmmyAction}" description="This allows handling onClick events" />
+    <aura:attribute name="data" type="String" description="Any data to be passed via html5 data- attribute"/>
+
+    <!-- Attributes for SVG -->
+    <aura:attribute name="svgXlinkHref" type="String" description="svgIcon's xlink-href" />
+    <aura:attribute name="svgClass" type="String" description="svgIcon CSS classname" />
+
+    <button class="{!v.class}" onclick="{!v.onclick}" data-data="{!v.data}">
+	<c:svg class="{!v.svgClass}" xlinkHref="{!v.svgXlinkHref}" />
+        {!v.label}
+	</button>
+</aura:component>

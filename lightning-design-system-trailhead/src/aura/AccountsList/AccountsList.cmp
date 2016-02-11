@@ -1,0 +1,40 @@
+<aura:component controller="AccountsController">
+    <aura:attribute name="accounts" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <!-- Use the Apex model and controller to fetch server side data -->
+   <table class="slds-table slds-table--bordered slds-table--striped">
+      <thead>
+        <tr>
+           <th scope="col"><span class="slds-truncate">ID</span></th>
+           <th scope="col"><span class="slds-truncate">Name</span></th>
+           <th scope="col"><span class="slds-truncate">Type</span></th>
+           <th scope="col"><span class="slds-truncate">Number Of Employees</span></th>
+           <th scope="col"><span class="slds-truncate">Ticker Symbol</span></th>
+           <th scope="col"><span class="slds-truncate">Phone</span></th>
+           <th scope="col"><span class="slds-truncate">Details</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <aura:iteration items="{!v.accounts}" var="account">
+         <tr>
+           <td>{!account.Id}</td>
+           <td>{!account.Name}</td>
+           <td>{!account.Type}</td>
+           <td>{!account.NumberOfEmployees}</td>
+           <td>{!account.TickerSymbol}</td>
+           <td>{!account.Phone}</td>
+           <td>
+              <c:button class="slds-button slds-button--neutral"
+                 label="Details"
+                 svgXlinkHref="/resource/SLDS090/assets/icons/standard-sprite/svg/symbols.svg#account"
+                 svgClass="slds-icon slds-icon-text-default"
+                 onclick="{!c.showDetails}"
+                 data="{!account.Id}"
+              />
+           </td>
+         </tr>
+        </aura:iteration>
+      </tbody>
+   </table>
+</aura:component>
