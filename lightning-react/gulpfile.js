@@ -3,7 +3,7 @@ var componentName = 'HereIsYourComponentName';
 var gulp = require('gulp');
 var zip = require('gulp-zip');
 var browserify = require('browserify');
-var debowerify = require('debowerify');
+var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var deamd = require('deamd');
 var through2 = require('through2');
@@ -63,9 +63,9 @@ gulp.task('js', function() {
   return browserify({
     entries: ['./src/scripts/'+ componentName +'.js'],
     standalone: componentName
-  }).transform(debowerify)
+  }).transform(babelify, {presets: ['es2015', 'react']})
   .bundle()
-  .on('error', handleErrors)
+  .on('error', function(err) {console.log(err.message);})
   .pipe(source(componentName + '.js'))
   .pipe(deamd())
   .pipe(gulp.dest('./build/scripts'));
