@@ -1,11 +1,11 @@
-var _ = require("lodash");
-var $ = require("jquery");
+import React from 'react';
+import {render} from 'react-dom';
+import ContactSearch from './ContactSearch';
 
-module.exports = {
-  jqueryVersion: function() {
-    return $.fn.jquery;
-  },
-  lodashVersion: function() {
-    return _.VERSION;
-  }
+export var init = function(el, service) {
+
+  render((
+    <ContactSearch service={service}/>
+  ), el);
+
 };
