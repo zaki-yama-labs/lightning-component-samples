@@ -1,0 +1,8 @@
+.DS_Store
+
+.env
+
+*.resource
+build
+node_modules
+bower_components
