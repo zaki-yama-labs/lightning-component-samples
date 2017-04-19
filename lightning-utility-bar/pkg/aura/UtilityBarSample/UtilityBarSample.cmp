@@ -1,0 +1,3 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+  <div aura:id="root"/>
+</aura:component>

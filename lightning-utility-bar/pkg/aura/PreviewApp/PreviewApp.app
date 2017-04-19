@@ -1,3 +1,3 @@
 <aura:application>
-  <c:HereIsYourComponentName />
+  <c:UtilityBarSample />
 </aura:application>
