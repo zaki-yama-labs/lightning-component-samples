@@ -1,54 +1,21 @@
-React Lightning Component Template
-----------------------------------
+Lightning Utility Bar Sample
+============================
 
-(For Japanese, please see [README.jp.md](README.jp.md))
+Utility Bar のサンプル。
 
-A template for developing Lightning Component with React.  
-This template automates the following things:
+## 使い方
 
-- Build JavaScript & CSS using webpack
-- Compress all bundled files and create StaticResource (`.resource`)
-- Deploy StaticResource and all other metadata to your Salesforce org
-- Watch file changes and run re-build & deploy
-
-### Installation
-
-First you need to edit `.env` and input your Salesforce org credentials.  
-Then run following command.
+`.env.sample` をコピーして `.env` を作成し、ユーザー名・パスワードを記入する。  
+その後、以下のコマンドを実行する。
 
 ```zsh
-$ npm install
-$ npm install -g gulp
-
-# Build JS/CSS & Create StaticResource & Deploy
-$ gulp
+$ yarn add -g gulp
+$ yarn
+$ gulp deploy
 ```
 
 
-### Customization
+## NOTE
 
-##### Rename Your Lightning Component Name
-
-The default Lightning Component name is `HereIsYourComponentName`.  
-You can rename it as you like.
-
-Please rename the following:
-
-- `componentName` variable in `gulpfile.js`
-- All directories and files under `pkg/aura` and `pkg/staticresources`
-- Inside `pkg/aura/PreviewApp/PreviewApp.app`
-- Inside `pkg/aura/HereIsYourComponentName/HereIsYourComponentName.cmp` (At `ltng:require`)
-
-##### Rename Your Library Name
-
-The default library name is `yourLibraryName`.  
-This name is used in client controller script of component.
-
-Please rename the following:
-
-- `libraryName` variable in `webpack.config.js`
-- Inside `pkg/aura/HereIsYourComponentName/HereIsYourComponentNameController.js` (Where calling `init` method)
-
-### License
-
-MIT
+package.json に使用していないライブラリがあったり、gulpfile にデプロイ以外のタスクが定義されていますが  
+https://github.com/zaki-yama/react-lightning-component-template をベースにしているためです。
