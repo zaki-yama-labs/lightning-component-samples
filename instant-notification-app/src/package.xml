@@ -5,6 +5,10 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>BearAlertTopicAssignmentTrigger</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
         <members>notificationConsole</members>
         <name>AuraDefinitionBundle</name>
     </types>
